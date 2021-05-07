@@ -1,46 +1,15 @@
-class Cliente{
-    nome;
-    cpf;
-}
+import {Cliente} from "./Cliente.js"
+import {ContaCorrente} from "./ContaCorrente.js"
+import { ContaPoupanca } from "./ContaPoupanca.js";
 
-class ContaCorrente{
-    agencia;
-    _saldo = 0;
+const cliente1 = new Cliente("Ricardo", 11122233309);
 
-    sacar(valor){
-        if (this._saldo >= valor){
-            this._saldo -= valor;
-            console.log("Sacou: ", valor, "| Saldo atual: ", this._saldo);
-            return "Saque realizado! Saldo ficou: ", this._saldo;
-        } else {
-            console.log("Saldo insuficiente, não foi possivel sacar!");
-        }
-    }
+const contaCorrenteRicardo = new ContaCorrente(1001, cliente1);
+contaCorrenteRicardo.depositar(500);
+contaCorrenteRicardo.sacar(100);
 
-    depositar(valor){
-        if (valor > 0){
-            this._saldo += valor;
-            console.log("Deposito realizado! Saldo ficou: ", this._saldo);
-        } else {
-            console.log("Deposito não realizado, o valor tem que ser maior que 0!");
-        }
-    }
+const ContaPoupancaRicardo = new ContaPoupanca(50, cliente1, 1001);
 
-}
-
-const cliente1 = new Cliente();
-cliente1.nome = "Jamilly";
-cliente1.cpf = "00011122233"
-
-const cliente2 = new Cliente();
-cliente2.nome = "Cristiane";
-cliente2.cpf = "00011122244"
-
-const contaCorrenteJamilly = new ContaCorrente();
-contaCorrenteJamilly.agencia = 1001;
-
-contaCorrenteJamilly.depositar(350);
-contaCorrenteJamilly.sacar(120);
-
-console.log(contaCorrenteJamilly);
-
+console.log("------Bytebank------");
+console.log(ContaPoupancaRicardo);
+console.log(contaCorrenteRicardo);
