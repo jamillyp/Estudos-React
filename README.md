@@ -1,2 +1,2 @@
-# Estudos-React
+# jp-money
 
